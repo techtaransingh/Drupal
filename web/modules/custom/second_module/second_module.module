@@ -1,0 +1,54 @@
+<?php
+use Drupal\node\Entity\Node;
+use Drupal\Core\Form\FormStateInterface;
+/**
+ * Implements hook_theme().
+ */
+function second_module_theme($existing, $type, $theme, $path) {
+  return [
+    'second_template' => [
+      'variables' => ['test_var' => NULL,'people'=>[]],
+      'template' => 'list_template',
+    ],
+     'chef_template' => [
+      'variables' => ['test_var' => NULL,'listForm'=> NULL,'data'=>[]],
+      'template' => 'cheflist_template',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_alter().
+ */
+function second_module_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  
+  if ($form_id == 'form1') {
+    unset($form['submit']['#submit']);
+   // $form['#validate'][] = 'wcp_module_custom_user_register_validate';
+    $form['submit']['#submit'][] = 'user_data';
+  
+    
+        $form['gender'] = [
+            '#type' => 'textfield',
+            '#title' => t('Gender'),
+            '#required' => TRUE,
+            '#weight' => 3,
+        ];
+  $form['submit']['#weight'] = 4;
+
+    // You can adjust the weights of the existing fields (name and age) if needed(in sequence of nos. in weight).
+    $form['name']['#weight'] = 1;
+    $form['mobile']['#weight'] = 2;
+
+    
+  }
+
+    
+}
+
+
+function user_data(array &$form, FormStateInterface $form_state){
+  //print_r($form_state->getValues());
+    return'helloooooo';
+   
+    }

@@ -1,0 +1,46 @@
+
+<table>
+  <thead>
+    <tr>
+    
+      <th scope="col">Name</th>
+      <th scope="col">Profession</th>
+      <th scope="col">Email</th>
+      <th scope="col">Id</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for artist in artists %}
+   
+    <tr>
+    
+        <td>{{ artist.name }}</td>
+        <td>{{ artist.profession }}</td>
+        <td>{{ artist.email }}</td>
+          <td>{{ artist.id }}</td>
+           <td><a href="{{ path('first_module.editNodeEntry', {'id': artist.id}) }}">Edit</a></td>
+           <td><a href="{{ path('first_module.deleteNodeEntry', {'id': artist.id}) }}">Delete</a></td>
+
+    </tr>
+    
+{% endfor %}
+
+  {#
+  comment starts - second method to fetch directly without using foreach loop in controller
+   {% for key,value in artists %}
+   
+    <tr>
+     <td>{{ value.label }}</td>
+      <td>{{ value.field_name.value }}</td>
+      <td>{{ value.field_profession.value }}</td>
+      <td>{{ value.field_email.value }}</td>
+      <td>{{ value.id }}</td>
+      
+    </tr>
+    
+{% endfor %}
+ #}
+    
+  </tbody>
+</table>

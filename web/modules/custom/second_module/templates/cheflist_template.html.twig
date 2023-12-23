@@ -1,0 +1,29 @@
+{{listForm}}
+
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Ingredients</th>
+      <th scope="col">Prep Time</th>
+       <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for key,value in data %}
+   
+    <tr>
+     
+      <td>{{ value.field_dish }}</td>
+      <td>{{ value.field_ingredients }}</td>
+      <td>{{ value.field_preptime }}</td>
+    <td>
+    <img src="{{value.field_recipe_image }}" alt="Recipe Image" style="width: 50px; height: 50px;"/>
+    </td>
+    </tr>
+    
+{% endfor %}
+    
+  </tbody>
+</table>

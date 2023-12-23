@@ -1,0 +1,55 @@
+second_module.testing:
+  path: "/testing/page"
+  defaults:
+    _controller: '\Drupal\second_module\Controller\TestingController::testing'
+    _title: "Welcome to the testing page."
+  requirements:
+    _permission: "access content"
+
+second_module.form1:
+  path: "/form1"
+  defaults:
+    _form: '\Drupal\second_module\Form\Form1'
+    _title: "FORM 1"
+  requirements:
+    _permission: "access content"
+
+second_module.form2:
+  path: "/form2"
+  defaults:
+    _form: '\Drupal\second_module\Form\Form2'
+    _title: "FORM 2"
+  requirements:
+    _permission: "access content"
+
+second_module.form3:
+  path: "/form3"
+  defaults:
+    _form: '\Drupal\second_module\Form\Form3'
+    _title: "FORM 3"
+  requirements:
+    _permission: "access content"
+
+second_module.chefForm:
+  path: "/chef/form"
+  defaults:
+    _form: '\Drupal\second_module\Form\Chef'
+    _title: "Chef Form"
+  requirements:
+    _permission: "access content"
+
+second_module.recipeform:
+  path: "/recipe/form"
+  defaults:
+    _form: '\Drupal\second_module\Form\Recipe'
+    _title: "Recipe Form"
+  requirements:
+    _permission: "access content"
+
+second_module.formList:
+  path: "/form/list"
+  defaults:
+    _controller: '\Drupal\second_module\Controller\RecipeController::formList'
+    _title: "Form + List on same page."
+  requirements:
+    _permission: "access content"

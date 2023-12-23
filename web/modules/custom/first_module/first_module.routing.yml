@@ -1,0 +1,95 @@
+first_module.welcome:
+  path: "/welcome/page"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\WelcomeController::welcome'
+    _title: "Welcome to My Module in Drupal 9"
+  requirements:
+    _permission: "access content"
+
+first_module.demo:
+  path: "/demo/page"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\WelcomeController::demo'
+    _title: "Welcome to the second page."
+  requirements:
+    _permission: "access content"
+
+first_module.theme:
+  path: "/demo/theme"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\WelcomeController::theme'
+    _title: "Welcome to my custom theme."
+  requirements:
+    _permission: "access content"
+
+first_module.form:
+  path: "/demo/form"
+  defaults:
+    _form: '\Drupal\first_module\Form\registered_users'
+    _title: "Registration Form"
+  requirements:
+    _permission: "access content"
+
+first_module.fetchData:
+  path: "/demo/fetch/data"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\WelcomeController::fetchData'
+    _title: "Registration Form Data"
+  requirements:
+    _permission: "access content"
+
+first_module.editEntry:
+  path: "/demo/edit/entry/{id}"
+  defaults:
+    _form: '\Drupal\first_module\Form\edit_users'
+    _title: "edit entry"
+  requirements:
+    _permission: "access content"
+
+first_module.deleteEntry:
+  path: "/demo/delete/entry/{id}"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\WelcomeController::deleteEntry'
+    _title: "delete krdooooo"
+  requirements:
+    _permission: "access content"
+
+first_module.nodeData:
+  path: "/node/data"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\NodeController::dataList'
+    _title: "Node Data List"
+  requirements:
+    _permission: "access content"
+
+first_module.node_registered_users:
+  path: "/node/registered/users"
+  defaults:
+    _form: '\Drupal\first_module\Form\node_registered_users'
+    _title: "Registration through node"
+  requirements:
+    _permission: "access content"
+
+first_module.editNodeEntry:
+  path: "/edit/node/users/{id}"
+  defaults:
+    _form: '\Drupal\first_module\Form\edit_node_users'
+    _title: "Edit through node"
+  requirements:
+    _permission: "access content"
+
+first_module.deleteNodeEntry:
+  path: "/delete/node/users/{id}"
+  defaults:
+    _controller: '\Drupal\first_module\Controller\NodeController::deleteEntry'
+    _title: "Delete through node"
+  requirements:
+    _permission: "access content"
+
+first_module.ajax_form:
+  path: "/ajax/registered/users"
+  defaults:
+    _form: '\Drupal\first_module\Form\ajax_form'
+    _title: "Registration through AJAX"
+  requirements:
+    _permission: "access content"
