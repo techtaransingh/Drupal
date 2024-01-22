@@ -1,0 +1,32 @@
+<h3>If quiz not present here in the list, click here <a href="{{path('quiz_module.addQuiz_form')}}">Add Quiz</a> </h3>
+
+<table>
+  <thead>
+    <tr>
+    <th scope="col">Quiz</th>
+      <th scope="col">Conducted Date</th>
+        <th scope="col">Level</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Action(Not Working)</th>
+        <th scope="col">Action(Not Working)</th>
+  
+    </tr>
+  </thead>
+  <tbody>
+   {% for key,value in quiz %}
+   
+    <tr>
+     <td><a href="{{ path('quiz_module.questionList_quiz',{'id': value.id})}}">{{ value.label }}</a></td>
+      <td>{{ value.	field_quiz_date.value }}</td>
+      <td>{{ value.	field_quiz_level.value }}</td>
+      <td>{{ value.	field_quiz_subject.value }}</td>
+  
+      <td><a href="{{ path('first_module.editEntry', {'id': value.id}) }}">Edit</a></td>
+      <td><a href="{{ path('first_module.deleteEntry', {'id': value.id}) }}">Delete</a></td>
+
+    </tr>
+    
+{% endfor %}
+    
+  </tbody>
+</table>

@@ -30,19 +30,19 @@ class node_registered_users extends FormBase
         $form['name'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Name'),
-           
+
         ];
 
         $form['email'] = [
             '#type' => 'email',
             '#title' => $this->t('Email'),
-            
+
         ];
 
         $form['profession'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Profession'),
-           
+
         ];
 
         $form['submit'] = [
@@ -52,7 +52,8 @@ class node_registered_users extends FormBase
 
         return $form;
     }
-    public function validateForm(array &$form, FormStateInterface $form_state) {
+    public function validateForm(array &$form, FormStateInterface $form_state)
+    {
         $name = $form_state->getValue('name');
         $profession = $form_state->getValue('profession');
         $email = $form_state->getValue('email');
@@ -77,28 +78,28 @@ class node_registered_users extends FormBase
         $profession = $form_state->getValue('profession');
         $email = $form_state->getValue('email');
 
-         // Query to get the count of existing 'artist' nodes
-    $query = \Drupal::entityQuery('node')
-    ->condition('type', 'artist');
-$count = $query->count()->execute();
-  
-// Create a new 'artist' node
-    $node = \Drupal\node\Entity\Node::create([
-    'type' => 'artist',
-    'title' => 'Entry ' . ($count + 1), // Dynamic title based on the count
-    'field_name' => $name,
-    'field_profession' => $profession,
-    'field_email' => $email,
-    // Add other fields as needed.
-  ]);
+        // Query to get the count of existing 'artist' nodes
+        $query = \Drupal::entityQuery('node')
+            ->condition('type', 'artist');
+        $count = $query->count()->execute();
 
-  $node->save();
-  \Drupal::service('cache_tags.invalidator')->invalidateTags(['node:' . $node->id()]);
+        // Create a new 'artist' node
+        $node = \Drupal\node\Entity\Node::create([
+            'type' => 'artist',
+            'title' => 'Entry ' . ($count + 1), // Dynamic title based on the count
+            'field_name' => $name,
+            'field_profession' => $profession,
+            'field_email' => $email,
+            // Add other fields as needed.
+        ]);
+
+        $node->save();
+        \Drupal::service('cache_tags.invalidator')->invalidateTags(['node:' . $node->id()]);
 
 
-  // Display a message
-  \Drupal::messenger()->addMessage($this->t('User information node saved successfully.'));
+        // Display a message
+        \Drupal::messenger()->addMessage($this->t('User information node saved successfully.'));
 
     }
-    
-}   
+
+}

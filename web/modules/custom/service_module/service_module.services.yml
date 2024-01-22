@@ -1,0 +1,12 @@
+services:
+  service_module.password_generator:
+    class: '\Drupal\service_module\Service\PasswordGeneratorService'
+    arguments: []
+
+  service_module.external_api_data:
+    class: '\Drupal\service_module\Service\MyApiService'
+    arguments: ["@http_client"]
+
+  service_module.event_date:
+    class: '\Drupal\service_module\Service\EventDateService'
+    arguments: []

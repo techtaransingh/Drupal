@@ -1,0 +1,47 @@
+quiz_module.addQuiz_form:
+  path: "/add/quiz"
+  defaults:
+    _form: '\Drupal\quiz_module\Form\AddQuiz'
+    _title: "Prepare Quiz"
+  requirements:
+    _permission: "access content"
+
+quiz_module.addQues_form:
+  path: "/add/ques"
+  defaults:
+    _form: '\Drupal\quiz_module\Form\AddQues'
+    _title: "Add Questions"
+  requirements:
+    _permission: "access content"
+
+quiz_module.listQues_form:
+  path: "/list/ques"
+  defaults:
+    _controller: '\Drupal\quiz_module\Controller\UserController::listQuestions'
+    _title: "Select Questions"
+  requirements:
+    _permission: "access content"
+
+quiz_module.user_dashboard:
+  path: "/dashboard"
+  defaults:
+    _controller: '\Drupal\quiz_module\Controller\UserController::userDashboard'
+    _title: "User Dashboard"
+  requirements:
+    _permission: "access content"
+
+quiz_module.list_quiz:
+  path: "/list/quiz"
+  defaults:
+    _controller: '\Drupal\quiz_module\Controller\UserController::listQuiz'
+    _title: "Quiz List"
+  requirements:
+    _permission: "access content"
+
+quiz_module.questionList_quiz:
+  path: "/list/quiz/{id}"
+  defaults:
+    _controller: '\Drupal\quiz_module\Controller\UserController::questionList_quiz'
+    _title: "Quiz List"
+  requirements:
+    _permission: "access content"

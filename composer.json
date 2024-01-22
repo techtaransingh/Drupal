@@ -20,7 +20,10 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/devel": "^5.1",
-        "drupal/restui": "^1.21"
+        "drupal/restui": "^1.21",
+        "drupal/smtp": "^1.2",
+        "drupal/swiftmailer": "^2.4",
+        "guzzlehttp/guzzle": "*"
     },
     "conflict": {
         "drupal/drupal": "*"

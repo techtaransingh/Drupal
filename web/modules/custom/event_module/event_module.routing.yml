@@ -1,0 +1,16 @@
+event_module.example:
+  path: "/event-module/example"
+  defaults:
+    _title: "Example"
+    _controller: '\Drupal\event_module\Controller\EventModuleController::build'
+  requirements:
+    _permission: "access content"
+
+event_module.event_client_form:
+  path: "/event/client/form"
+  defaults:
+    _title: "Client form through event task"
+    _form: '\Drupal\event_module\Form\ClientForm'
+  requirements:
+    _permission: "access content"
+    # _role: "admin"

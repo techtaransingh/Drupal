@@ -1,0 +1,46 @@
+<?php
+use Drupal\node\Entity\Node;
+use Drupal\Core\Form\FormStateInterface;
+/**
+ * Implements hook_theme().
+ */
+function quiz_module_theme($existing, $type, $theme, $path) {
+  return [
+    'user_template' => [
+      'variables' => ['test_var' => NULL,'role'=>[],'username'=>NULL ],
+      'template' => 'userDashboard',
+    ],
+    'quiz_template' => [
+      'variables' => ['test_var' => NULL,'quiz'=>[] ],
+      'template' => 'listQuiz',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_alter().
+ */
+function quiz_module_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+   
+if ($form_id == 'user_login_form') {
+    
+   // Override the default submit handler and set your custom redirect function.
+    $form['#submit'][] = 'quiz_module_user_login_form_submit';
+
+  }
+  
+}
+/**
+ * Custom submit handler for the user login form.
+ */
+function quiz_module_user_login_form_submit(&$form, FormStateInterface $form_state) {
+  
+    // Redirect to your custom controller method.
+    $form_state->setRedirect('quiz_module.user_dashboard');
+  
+}
+  
+function quiz_module_step2Form(&$form, FormStateInterface $form_state){
+
+  $form_state->setRedirect('quiz_module.listQues_form');
+}

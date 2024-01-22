@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for event_module module.
+ */
+function event_module_mail($key, &$message, $params)
+{
+
+    $options = array(
+        'langcode' => $message['langcode'],
+    );
+
+    switch ($key) {
+        case 'create_page':
+            // echo 'hook yui';
+            // die;
+            $message['from'] = 'sir';
+            $message['subject'] = ' new task assigned.';
+            $message['body'][] = $params['message'];
+            break;
+        case 'welcome_page':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['subject'] = t('testing version 2');
+            $message['body'][] = $params['message'];
+            break;
+    }
+}

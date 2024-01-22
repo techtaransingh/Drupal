@@ -1,0 +1,28 @@
+
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Event Name</th>
+      <th scope="col">Date</th>
+       <th scope="col">Venue</th>
+        <th scope="col">Action through service</th>
+        <th scope="col">Current date</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for key,value in data %}
+   
+    <tr>
+      <td>{{ value.event_name }}</td>
+      <td>{{ value.date}}</td>
+      <td>{{ value.venue }}</td>
+      <td>{{ value.date_check}}</td>
+<td>{{ value.today}}</td>
+    </tr>
+    
+{% endfor %}
+    
+  </tbody>
+</table>
+

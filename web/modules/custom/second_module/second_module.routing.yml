@@ -1,11 +1,3 @@
-second_module.testing:
-  path: "/testing/page"
-  defaults:
-    _controller: '\Drupal\second_module\Controller\TestingController::testing'
-    _title: "Welcome to the testing page."
-  requirements:
-    _permission: "access content"
-
 second_module.form1:
   path: "/form1"
   defaults:
@@ -51,5 +43,21 @@ second_module.formList:
   defaults:
     _controller: '\Drupal\second_module\Controller\RecipeController::formList'
     _title: "Form + List on same page."
+  requirements:
+    _permission: "access content"
+
+second_module.mailTest:
+  path: "/mail/test"
+  defaults:
+    _controller: '\Drupal\second_module\Controller\TestingController::email_testing'
+    _title: "Email Testing."
+  requirements:
+    _permission: "access content"
+
+second_module.mailTest2:
+  path: "/mail/test2"
+  defaults:
+    _controller: '\Drupal\second_module\Controller\TestingController::email_testing2'
+    _title: "Email Testing 2."
   requirements:
     _permission: "access content"

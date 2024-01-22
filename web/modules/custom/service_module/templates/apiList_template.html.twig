@@ -1,0 +1,26 @@
+{{dump(results)}}
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for key,value in results %}
+   
+    <tr>
+     
+      <td>{{ value.id }}</td>
+      <td>{{ value.title }}</td>
+      <td>{{ value.body }}</td>
+
+    </tr>
+    
+{% endfor %}
+    
+  </tbody>
+</table>
+

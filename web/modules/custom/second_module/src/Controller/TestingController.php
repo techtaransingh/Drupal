@@ -1,27 +1,79 @@
 <?php
+
 namespace Drupal\second_module\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
+/**
+ * Returns responses for wcp_module routes.
+ */
 class TestingController extends ControllerBase
 {
-    public function testing()
+
+    /**
+     * Builds the response.
+     */
+    public function email_testing()
     {
-        $people = [
-            ['name' => 'Rajesh', 'age' => 25, 'phone' => '1234567890'],
-            ['name' => 'Harman', 'age' => 30, 'phone' => '9876543210'],
-            ['name' => 'Rajkumar', 'age' => 22, 'phone' => '5551234567'],
-            ['name' => 'Bobby', 'age' => 28, 'phone' => '7893216540'],
+
+        $mailManager = \Drupal::service('plugin.manager.mail');
+        $module = 'second_module';
+        $key = 'create_page';
+        $to = 'techtaransingh@gmail.com';
+        $params['message'] = 'Testing from website ';
+        $params['node_title'] = 'Test Node';
+        $langcode = 'ENG';
+        $send = true;
+
+        $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+        if ($result['result'] !== true) {
+
+            \Drupal::messenger()->addMessage(t('There was a problem sending your message and it was not sent'), 'error');
+
+        } else {
+
+            \Drupal::messenger()->addMessage(t('Your message has been sent.'), 'status');
+
+        }
+
+        $build['content'] = [
+            '#type' => 'item',
+            '#markup' => $this->t('It works!'),
         ];
 
+        return $build;
+    }
+    public function email_testing2()
+    {
 
-        return array(
-            '#theme' => 'second_template',
-            '#people' => $people,
-        );
+        $mailManager = \Drupal::service('plugin.manager.mail');
+        $module = 'second_module';
+        $key = 'welcome_page';
+        $to = 'techtaransingh@gmail.com';
+        $params['message'] = 'Testing from website ';
+        $params['node_title'] = 'Test welcome Node';
+        $langcode = 'ENG';
+        $send = true;
+        $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+        if ($result['result'] !== true) {
+
+            \Drupal::messenger()->addMessage(t('There was a problem sending your message and it was not sent'), 'error');
+
+        } else {
+
+            \Drupal::messenger()->addMessage(t('Your message has been sent.'), 'status');
+
+        }
+
+        $build['content'] = [
+            '#type' => 'item',
+            '#markup' => $this->t('It works!'),
+        ];
+
+        return $build;
     }
 
+
 }
-
-
-?>

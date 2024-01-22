@@ -1,0 +1,11 @@
+services:
+  event_module.node_creation_subscriber:
+    class: '\Drupal\event_module\EventSubscriber\NodeCreationSubscriber'
+    arguments:
+      - "@event_module.send_email_service"
+    tags:
+      - { name: "event_subscriber" }
+
+  event_module.send_email_service:
+    class: '\Drupal\event_module\Service\SendEmailService'
+    arguments: []
